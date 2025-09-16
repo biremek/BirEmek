@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:biremek/models/worker.dart';
-import 'package:biremek/utils/colors.dart';
+import '../models/worker.dart';
+import '../utils/colors.dart';
 
 class WorkersPage extends StatefulWidget {
   const WorkersPage({super.key});
@@ -610,8 +610,10 @@ class _WorkersPageState extends State<WorkersPage> {
 }
 
 class WorkerFilterModal extends StatefulWidget {
+  const WorkerFilterModal({super.key});
+  
   @override
-  _WorkerFilterModalState createState() => _WorkerFilterModalState();
+  State<WorkerFilterModal> createState() => _WorkerFilterModalState();
 }
 
 class _WorkerFilterModalState extends State<WorkerFilterModal> {

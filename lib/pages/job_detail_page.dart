@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:biremek/models/job.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../models/job.dart';
+import '../utils/colors.dart';
+import '../utils/saved_items_manager.dart';
 
 class JobDetailPage extends StatefulWidget {
   final Job job;
@@ -15,6 +18,93 @@ class JobDetailPage extends StatefulWidget {
 
 class _JobDetailPageState extends State<JobDetailPage> {
   bool _hasApplied = false;
+  bool _isSaved = false;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfSaved();
+  }
+
+  Future<void> _checkIfSaved() async {
+    final isSaved = await SavedItemsManager.instance.isJobSaved(widget.job.id);
+    setState(() {
+      _isSaved = isSaved;
+    });
+  }
+
+  Future<void> _toggleSaved() async {
+    if (_isLoading) return;
+    
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      if (_isSaved) {
+        await SavedItemsManager.instance.removeJob(widget.job.id);
+        setState(() {
+          _isSaved = false;
+        });
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'İş ilanı kayıtlardan kaldırıldı',
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+              ),
+              backgroundColor: AppColors.primaryBlue,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          );
+        }
+      } else {
+        await SavedItemsManager.instance.saveJob(widget.job);
+        setState(() {
+          _isSaved = true;
+        });
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'İş ilanı kaydedildi',
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+              ),
+              backgroundColor: AppColors.green,
+              behavior: SnackBarBehavior.floating,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Bir hata oluştu',
+              style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+            ),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        );
+      }
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +123,20 @@ class _JobDetailPageState extends State<JobDetailPage> {
             onPressed: () {},
           ),
           IconButton(
-            icon: const Icon(Icons.bookmark_border, color: Colors.black),
-            onPressed: () {},
+            icon: _isLoading
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                    ),
+                  )
+                : Icon(
+                    _isSaved ? Icons.bookmark_rounded : Icons.bookmark_border,
+                    color: _isSaved ? AppColors.primaryBlue : Colors.black,
+                  ),
+            onPressed: _toggleSaved,
           ),
         ],
       ),
@@ -773,19 +875,12 @@ class _AddReviewModalState extends State<AddReviewModal> {
                           onPressed: _rating > 0 && _commentController.text.isNotEmpty
                               ? () {
                                   // Yorum ekleme işlemi
-                                  final newReview = JobReview(
-                                    id: DateTime.now().millisecondsSinceEpoch.toString(),
-                                    userName: 'Kullanıcı Adı', // Gerçek uygulamada kullanıcı bilgisi
-                                    userImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-                                    comment: _commentController.text,
-                                    rating: _rating,
-                                    date: 'Şimdi',
-                                    isVerifiedWorker: _isVerifiedWorker,
-                                  );
+                                  // TODO: Implement review submission logic
+                                  print('Review submitted: Rating: $_rating, Comment: ${_commentController.text}');
                                   
                                   // Gerçek uygulamada burada API çağrısı yapılır
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
+                                    const SnackBar(
                                       content: Text('Yorumunuz başarıyla eklendi!'),
                                       backgroundColor: Colors.green,
                                     ),

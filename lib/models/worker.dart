@@ -1,4 +1,4 @@
-import 'package:biremek/models/review.dart';
+import 'review.dart';
 
 class Worker {
   final String id;

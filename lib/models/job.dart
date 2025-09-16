@@ -1,4 +1,3 @@
-import 'package:biremek/models/review.dart';
 import 'package:flutter/material.dart';
 
 class Job {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:biremek/models/course.dart';
-import 'package:biremek/utils/colors.dart';
-import 'package:biremek/pages/course_detail_page.dart';
+import '../models/course.dart';
+import '../utils/colors.dart';
+import 'course_detail_page.dart';
 
 class CoursesPage extends StatefulWidget {
   const CoursesPage({super.key});

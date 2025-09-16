@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:biremek/models/job.dart';
-import 'package:biremek/utils/colors.dart';
+import '../models/job.dart';
+import '../utils/colors.dart';
 
 class JobsPage extends StatelessWidget {
   const JobsPage({super.key});

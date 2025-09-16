@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:biremek/models/worker.dart';
-import 'package:biremek/models/chat_room.dart';
-import 'package:biremek/models/review.dart';
-import 'package:biremek/pages/chat_detail_page.dart';
-import 'package:biremek/utils/colors.dart';
+import '../models/worker.dart';
+import '../models/chat_room.dart';
+import '../models/review.dart';
+import 'chat_detail_page.dart';
+import '../utils/colors.dart';
+import 'worker_detail_page.dart';
 
 class WorkerListingsPage extends StatefulWidget {
   const WorkerListingsPage({super.key});
@@ -15,14 +16,11 @@ class WorkerListingsPage extends StatefulWidget {
 
 class _WorkerListingsPageState extends State<WorkerListingsPage> {
   final TextEditingController _searchController = TextEditingController();
-  String _selectedSkill = 'Tümü';
-  String _selectedLocation = 'Tümü';
-  RangeValues _hourlyRateRange = const RangeValues(0, 1000);
-  bool _onlyAvailable = false;
+  String _selectedFilter = 'Önerilen';
   List<Worker> _filteredWorkers = [];
   List<Worker> _allWorkers = [];
-  List<String> _skills = ['Tümü', 'Sera', 'Hasat', 'Budama', 'Sulama', 'Organik'];
-  bool _isBookmarked = false;
+  List<String> _filters = ['Önerilen', 'En Yeni', 'En Eski', 'En Yüksek Ücret', 'En Düşük Ücret'];
+  bool _onlyAvailable = false;
 
   @override
   void initState() {
@@ -47,21 +45,33 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
             worker.description.toLowerCase().contains(searchText) ||
             worker.skills.any((skill) => skill.toLowerCase().contains(searchText));
 
-        final matchesSkill = _selectedSkill == 'Tümü' || 
-            worker.skills.contains(_selectedSkill);
-
-        final matchesLocation = _selectedLocation == 'Tümü' || 
-            worker.location.contains(_selectedLocation);
-
-        final matchesHourlyRate = worker.hourlyRate >= _hourlyRateRange.start && 
-            worker.hourlyRate <= _hourlyRateRange.end;
-
         final matchesAvailability = !_onlyAvailable || worker.isAvailable;
 
-        return matchesSearch && matchesSkill && matchesLocation && 
-               matchesHourlyRate && matchesAvailability;
+        return matchesSearch && matchesAvailability;
       }).toList();
+      
+      _applySorting();
     });
+  }
+
+  void _applySorting() {
+    switch (_selectedFilter) {
+      case 'Önerilen':
+        // Keep original order
+        break;
+      case 'En Yeni':
+        _filteredWorkers.sort((a, b) => b.postedDate.compareTo(a.postedDate));
+        break;
+      case 'En Eski':
+        _filteredWorkers.sort((a, b) => a.postedDate.compareTo(b.postedDate));
+        break;
+      case 'En Yüksek Ücret':
+        _filteredWorkers.sort((a, b) => b.hourlyRate.compareTo(a.hourlyRate));
+        break;
+      case 'En Düşük Ücret':
+        _filteredWorkers.sort((a, b) => a.hourlyRate.compareTo(b.hourlyRate));
+        break;
+    }
   }
 
   @override
@@ -99,7 +109,7 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
     return Container(
       padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
       decoration: BoxDecoration(
-        gradient: AppColors.primaryGradient,
+        color: AppColors.primaryBlue, // Aynı ton rengi için gradient yerine solid color
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +131,7 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
                     ),
                     SizedBox(height: isSmallScreen ? 4 : 8),
                     Text(
-                      '${_filteredWorkers.length} işçi bulundu',
+                      'Size uygun işçileri keşfedin',
                       style: GoogleFonts.poppins(
                         fontSize: isSmallScreen ? 12 : 14,
                         color: AppColors.white.withValues(alpha: 0.8),
@@ -139,85 +149,100 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
 
   Widget _buildSearchAndFilter(BuildContext context, bool isSmallScreen) {
     return Container(
-      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+      padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
       decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(isSmallScreen ? 12 : 20),
-          topRight: Radius.circular(isSmallScreen ? 12 : 20),
-        ),
+        color: AppColors.primaryBlue, // Aynı ton rengi için gradient yerine solid color
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              decoration: BoxDecoration(
-                color: AppColors.backgroundColor,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.cardBorder),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12 : 16),
+            decoration: BoxDecoration(
+              color: AppColors.searchBackground,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: AppColors.cardBorder,
+                width: 1,
               ),
-              child: Row(
-                children: [
-                  Icon(Icons.search, color: AppColors.textSecondary),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                        hintText: 'İşçi ara...',
-                        hintStyle: TextStyle(color: AppColors.textSecondary),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.zero,
-                        isDense: true,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.search,
+                  color: AppColors.iconSecondary,
+                  size: isSmallScreen ? 18 : 20,
+                ),
+                SizedBox(width: isSmallScreen ? 8 : 12),
+                Expanded(
+                  child: TextField(
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      hintText: 'İşçi ara',
+                      hintStyle: GoogleFonts.poppins(
+                        color: AppColors.textSecondary,
+                        fontSize: isSmallScreen ? 13 : 14,
                       ),
-                      style: TextStyle(color: AppColors.textPrimary),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(vertical: isSmallScreen ? 10 : 12),
                     ),
                   ),
-                   GestureDetector(
-                     onTap: () => _showFilterBottomSheet(context),
-                     child: Container(
-                       padding: EdgeInsets.all(isSmallScreen ? 6 : 8),
-                       decoration: BoxDecoration(
-                         color: AppColors.primaryBlue.withValues(alpha: 0.1),
-                         borderRadius: BorderRadius.circular(8),
-                       ),
-                       child: Row(
-                         mainAxisSize: MainAxisSize.min,
-                         children: [
-                           Icon(
-                             Icons.filter_list_rounded,
-                             color: AppColors.primaryBlue,
-                             size: isSmallScreen ? 16 : 18,
-                           ),
-                           SizedBox(width: isSmallScreen ? 3 : 4),
-                           Text(
-                             'Filtrele',
-                             style: GoogleFonts.poppins(
-                               fontSize: isSmallScreen ? 11 : 12,
-                               color: AppColors.primaryBlue,
-                               fontWeight: FontWeight.w500,
-                             ),
-                           ),
-                         ],
-                       ),
-                     ),
-                   ),
-                ],
-              ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(isSmallScreen ? 6 : 8),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryBlue.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.08),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: InkWell(
+                    onTap: () => _showFilterBottomSheet(context),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.filter_list_rounded,
+                          color: AppColors.primaryBlue,
+                          size: isSmallScreen ? 16 : 18,
+                        ),
+                        SizedBox(width: isSmallScreen ? 3 : 4),
+                        Text(
+                          'Filtrele',
+                          style: GoogleFonts.poppins(
+                            fontSize: isSmallScreen ? 11 : 12,
+                            color: AppColors.primaryBlue,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
+          SizedBox(height: isSmallScreen ? 8 : 12),
           SizedBox(
             height: 48,
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               scrollDirection: Axis.horizontal,
-              children: _skills.map((skill) {
+              children: _filters.map((filter) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
-                  child: Center(child: _buildFilterChip(skill)),
+                  child: Center(child: _buildFilterChip(filter)),
                 );
               }).toList(),
             ),
@@ -238,15 +263,25 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
         borderRadius: BorderRadius.circular(12),
       ),
       color: AppColors.white,
-      child: Container(
-        padding: EdgeInsets.all(isSmallScreen ? 10 : 12),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: AppColors.cardBorder.withValues(alpha: 0.5),
-            width: 1,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => WorkerDetailPage(worker: worker),
+            ),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: EdgeInsets.all(isSmallScreen ? 10 : 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: AppColors.cardBorder.withValues(alpha: 0.5),
+              width: 1,
+            ),
           ),
-        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -510,6 +545,7 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
             ),
           ],
         ),
+        ),
       ),
     );
   }
@@ -525,28 +561,25 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
           label,
           style: GoogleFonts.poppins(
             fontSize: isSmallScreen ? 11 : 12,
-            fontWeight: _selectedSkill == label ? FontWeight.w600 : FontWeight.w400,
-            color: _selectedSkill == label ? AppColors.primaryBlue : AppColors.textSecondary,
+            fontWeight: _selectedFilter == label ? FontWeight.w600 : FontWeight.w400,
+            color: _selectedFilter == label ? AppColors.primaryBlue : AppColors.textSecondary,
           ),
         ),
-        selected: _selectedSkill == label,
+        selected: _selectedFilter == label,
         onSelected: (selected) {
           setState(() {
-            _selectedSkill = label;
+            _selectedFilter = label;
           });
           _filterWorkers();
         },
-        backgroundColor: _selectedSkill == label ? AppColors.primaryBlue.withValues(alpha: 0.1) : AppColors.backgroundColor,
+        backgroundColor: _selectedFilter == label ? AppColors.primaryBlue.withValues(alpha: 0.1) : AppColors.searchBackground,
         selectedColor: AppColors.primaryBlue.withValues(alpha: 0.1),
         checkmarkColor: AppColors.primaryBlue,
         side: BorderSide(
-          color: _selectedSkill == label ? AppColors.primaryBlue : AppColors.cardBorder,
+          color: _selectedFilter == label ? AppColors.primaryBlue : AppColors.cardBorder,
           width: 1,
         ),
         padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 8 : 12, vertical: isSmallScreen ? 4 : 6),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
       ),
     );
   }
@@ -664,38 +697,6 @@ class _WorkerListingsPageState extends State<WorkerListingsPage> {
     ];
   }
 }
-
-class _SearchHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final Widget child;
-  final double height;
-
-  _SearchHeaderDelegate({
-    required this.child,
-    this.height = 120.0,
-  });
-
-  @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox(
-      height: height,
-      child: Material(
-        color: Colors.transparent,
-        child: child,
-      ),
-    );
-  }
-
-  @override
-  double get maxExtent => height;
-
-  @override
-  double get minExtent => height;
-
-  @override
-  bool shouldRebuild(covariant _SearchHeaderDelegate oldDelegate) {
-    return oldDelegate.height != height || oldDelegate.child != child;
-  }
-} 
 
 class WorkerFilterModal extends StatefulWidget {
   final bool onlyAvailable;

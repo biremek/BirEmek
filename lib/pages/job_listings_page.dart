@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:biremek/models/job.dart';
-import 'package:biremek/pages/job_detail_page.dart';
-import 'package:biremek/utils/colors.dart';
+import '../models/job.dart';
+import 'job_detail_page.dart';
+import '../utils/colors.dart';
 
 final List<Job> jobs = [
   Job(
@@ -439,7 +439,7 @@ class _JobListingsPageState extends State<JobListingsPage> {
     return Container(
       padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
       decoration: BoxDecoration(
-        gradient: AppColors.primaryGradient,
+        color: AppColors.primaryBlue, // Aynı ton rengi için gradient yerine solid color
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -472,6 +472,7 @@ class _JobListingsPageState extends State<JobListingsPage> {
               ),
             ],
           ),
+
         ],
       ),
     );
@@ -479,19 +480,28 @@ class _JobListingsPageState extends State<JobListingsPage> {
 
   Widget _buildSearchAndFilter(BuildContext context, bool isSmallScreen) {
     return Container(
-              padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-      color: AppColors.white,
-              child: Column(
-                children: [
+      padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+      decoration: BoxDecoration(
+        color: AppColors.primaryBlue, // Aynı ton rengi için gradient yerine solid color
+      ),
+      child: Column(
+        children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12 : 16),
-                      decoration: BoxDecoration(
+            decoration: BoxDecoration(
               color: AppColors.searchBackground,
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: AppColors.cardBorder,
                 width: 1,
               ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
             ),
             child: Row(
               children: [
@@ -519,6 +529,13 @@ class _JobListingsPageState extends State<JobListingsPage> {
                   decoration: BoxDecoration(
                     color: AppColors.primaryBlue.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.08),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
                   child: InkWell(
                     onTap: () => _showFilterModal(context),
@@ -560,12 +577,14 @@ class _JobListingsPageState extends State<JobListingsPage> {
               }).toList(),
             ),
           ),
-                    ],
-                  ),
+        ],
+      ),
     );
   }
 
-  Widget _buildFilterChip(BuildContext context, String label, [bool isSelected = false]) {
+
+
+  Widget _buildFilterChip(BuildContext context, String label) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 400;
     

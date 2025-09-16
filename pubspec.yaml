@@ -38,6 +38,7 @@ dependencies:
   google_fonts: ^6.1.0
   cached_network_image: ^3.3.0
   flutter_native_splash: ^2.4.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -94,8 +95,8 @@ flutter:
 # Splash screen configuration
 flutter_native_splash:
   color: "#FFFFFF"
-  image: assets/images/Adsız tasarım (1) (1).png
+  image: assets/images/splash_image.png
   android_12:
-    image: assets/images/Adsız tasarım (1) (1).png
+    image: assets/images/splash_image.png
     color: "#FFFFFF"
   web: false

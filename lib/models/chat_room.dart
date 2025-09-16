@@ -5,7 +5,7 @@ class ChatRoom {
   final String otherUserImageUrl;
   final String lastMessage;
   final DateTime lastMessageTime;
-  final int unreadCount;
+  int unreadCount;
   final bool isOnline;
 
   ChatRoom({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:biremek/models/chat_room.dart';
-import 'package:biremek/utils/colors.dart';
+import '../models/chat_room.dart';
+import '../utils/colors.dart';
 
 class ChatDetailPage extends StatefulWidget {
   final ChatRoom chatRoom;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:biremek/models/job.dart';
-import 'package:biremek/pages/job_listings_page.dart';
-import 'package:biremek/pages/job_detail_page.dart';
+import '../models/job.dart';
+import 'job_listings_page.dart';
+import 'job_detail_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:biremek/theme/app_colors.dart';
+import '../theme/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,7 +70,6 @@ class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     final isSmallScreen = screenWidth < 400;
     
     return SafeArea(
