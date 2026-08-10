@@ -76,6 +76,12 @@ iframe{border:0}
   color:var(--plum-900);margin-bottom:20px;
 }
 .h2 em{font-style:italic;color:var(--rose-500);position:relative}
+
+/* Başlık yazı tipi varsayılan olarak eski stil rakam kullanıyor;
+   telefon, fiyat ve saat gibi sayılarda düz rakamlar daha okunaklı */
+.hero__badges b,.ccard span,.promo__amount b,.steps__no,.footer__col li{
+  font-variant-numeric:lining-nums tabular-nums;
+}
 .h2--light{color:#fff}
 .h2--light em{color:var(--gold-300)}
 
