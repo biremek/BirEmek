@@ -16,8 +16,10 @@
 <meta property="og:title" content="Melis Kılınç Güzellik Salonu &amp; Beslenme Kliniği">
 <meta property="og:description" content="Güzelliğiniz ve sağlığınız için tek adres. Pozcu / Mersin — Randevu: 0553 353 77 00">
 <meta property="og:site_name" content="Melis Kılınç Güzellik">
+<meta property="og:image" content="assets/img/g1.jpg">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,14 +44,9 @@
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="container header__inner">
-    <a href="#hero" class="brand" aria-label="Ana sayfa">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2.2 2.6 3.3 5 3.3 7.2 0 2-1.5 3.3-3.3 3.3S8.7 11.2 8.7 9.2C8.7 7 9.8 4.6 12 2Z" fill="currentColor" opacity=".9"/><path d="M12 22c-2.2-2.6-3.3-5-3.3-7.2 0-2 1.5-3.3 3.3-3.3s3.3 1.3 3.3 3.3c0 2.2-1.1 4.6-3.3 7.2Z" fill="currentColor" opacity=".55"/></svg>
-      </span>
-      <span class="brand__text">
-        <span class="brand__name">Melis Kılınç</span>
-        <span class="brand__tag">Güzellik &amp; Beslenme</span>
-      </span>
+    <a href="#hero" class="brand" aria-label="Melis Kılınç Güzellik Salonu — ana sayfa">
+      <img class="brand__logo" src="assets/img/logo.png" width="462" height="154"
+           alt="Melis Kılınç Güzellik Salonu">
     </a>
 
     <nav class="nav" id="nav" aria-label="Ana menü">
@@ -122,8 +119,7 @@
       <div class="portrait">
         <div class="portrait__ring"></div>
         <div class="portrait__photo">
-          <!-- Fotoğrafı buraya ekleyin: assets/img/melis.jpg -->
-          <img src="assets/img/melis.jpg" alt="Diyetisyen Melis Kılınç" loading="eager" onerror="this.closest('.portrait__photo').classList.add('is-empty');this.remove()">
+          <img src="assets/img/melis.jpg" alt="Diyetisyen Melis Kılınç" width="880" height="880" loading="eager" onerror="this.closest('.portrait__photo').classList.add('is-empty');this.remove()">
           <span class="portrait__fallback" aria-hidden="true">MK</span>
         </div>
         <div class="portrait__chip portrait__chip--1">
@@ -163,7 +159,7 @@
           <!-- Salon fotoğrafı: assets/img/salon.jpg -->
           <img src="assets/img/salon.jpg" alt="Melis Kılınç Güzellik Salonu" loading="lazy" onerror="this.closest('.about__img').classList.add('is-empty');this.remove()">
           <span class="about__fallback" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2c2.2 2.6 3.3 5 3.3 7.2 0 2-1.5 3.3-3.3 3.3S8.7 11.2 8.7 9.2C8.7 7 9.8 4.6 12 2Z" opacity=".85"/><path fill="currentColor" d="M12 22c-2.2-2.6-3.3-5-3.3-7.2 0-2 1.5-3.3 3.3-3.3s3.3 1.3 3.3 3.3c0 2.2-1.1 4.6-3.3 7.2Z" opacity=".5"/></svg>
+            <img src="assets/img/logo.png" width="462" height="154" alt="" loading="lazy">
           </span>
         </div>
         <span class="about__stamp">
@@ -405,13 +401,13 @@
     </header>
 
     <div class="gallery__grid">
-      <!-- Fotoğraf eklemek için: assets/img/g1.jpg ... g6.jpg -->
-      <figure class="gal reveal" data-delay="0"><div class="gal__img"><img src="assets/img/g1.jpg" alt="Kaş tasarımı çalışması" loading="lazy" onerror="this.closest('.gal__img').classList.add('is-empty');this.remove()"></div><figcaption>Kaş Alımı &amp; Tasarımı</figcaption></figure>
-      <figure class="gal reveal" data-delay="80"><div class="gal__img"><img src="assets/img/g2.jpg" alt="Microblading çalışması" loading="lazy" onerror="this.closest('.gal__img').classList.add('is-empty');this.remove()"></div><figcaption>Microblading</figcaption></figure>
-      <figure class="gal reveal" data-delay="160"><div class="gal__img"><img src="assets/img/g3.jpg" alt="Protez tırnak çalışması" loading="lazy" onerror="this.closest('.gal__img').classList.add('is-empty');this.remove()"></div><figcaption>Protez Tırnak</figcaption></figure>
-      <figure class="gal reveal" data-delay="240"><div class="gal__img"><img src="assets/img/g4.jpg" alt="Cilt bakımı uygulaması" loading="lazy" onerror="this.closest('.gal__img').classList.add('is-empty');this.remove()"></div><figcaption>Cilt Bakımı</figcaption></figure>
-      <figure class="gal reveal" data-delay="320"><div class="gal__img"><img src="assets/img/g5.jpg" alt="Manikür uygulaması" loading="lazy" onerror="this.closest('.gal__img').classList.add('is-empty');this.remove()"></div><figcaption>Manikür</figcaption></figure>
-      <figure class="gal reveal" data-delay="400"><div class="gal__img"><img src="assets/img/g6.jpg" alt="Nail art çalışması" loading="lazy" onerror="this.closest('.gal__img').classList.add('is-empty');this.remove()"></div><figcaption>Nail Art</figcaption></figure>
+      <!-- Afişler kendi başlıklarını taşıdığı için üzerlerine yazı eklenmiyor -->
+      <figure class="gal reveal" data-delay="0"><img src="assets/img/g1.jpg" width="900" height="1176" alt="Kirpik lifting uygulaması öncesi ve sonrası" loading="lazy"></figure>
+      <figure class="gal reveal" data-delay="80"><img src="assets/img/g2.jpg" width="900" height="1176" alt="Cilt bakımı uygulaması öncesi ve sonrası" loading="lazy"></figure>
+      <figure class="gal reveal" data-delay="160"><img src="assets/img/g3.jpg" width="900" height="1176" alt="Protez tırnak uygulaması" loading="lazy"></figure>
+      <figure class="gal reveal" data-delay="240"><img src="assets/img/g4.jpg" width="900" height="1176" alt="Nail art uygulaması" loading="lazy"></figure>
+      <figure class="gal reveal" data-delay="320"><img src="assets/img/g5.jpg" width="900" height="1176" alt="Kirpik lifting uygulaması öncesi ve sonrası" loading="lazy"></figure>
+      <figure class="gal reveal" data-delay="400"><img src="assets/img/g6.jpg" width="900" height="1176" alt="Nail art uygulaması öncesi ve sonrası" loading="lazy"></figure>
     </div>
 
     <div class="gallery__cta reveal">
