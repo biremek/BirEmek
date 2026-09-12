@@ -733,6 +733,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-size:.72rem;letter-spacing:.1em;color:var(--ink-3);
 }
 
+/* =========================================================
+   JS YOKSA: perde ve giriş animasyonları devre dışı,
+   içerik ilk karede tam görünür
+   ========================================================= */
+html:not(.js) .loader{display:none}
+html:not(.js) .nav.is-loading .nav__mark,
+html:not(.js) .nav.is-loading .nav__by,
+html:not(.js) .nav.is-loading .nav__links,
+html:not(.js) .nav.is-loading .nav__cta,
+html:not(.js) .nav.is-loading .nav__burger,
+html:not(.js) .nav__name{opacity:1}
+html:not(.js) [data-reveal]{opacity:1;transform:none}
+html:not(.js) .line>span{transform:none}
+
 /* grid çocuklarının taşmasını engelle */
 .fabric>*,.specs__body>*,.order>*,.specs__box>*,.usage__grid>*,.features__grid>*{min-width:0}
 
