@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELA — Askıda Küvet | BirEmek</title>
+<meta name="description" content="VELA, TPU kaplı polyester kumaştan üretilen askıda küvet. Apartman dairesi, balkon ve banyo için katlanabilir, 15 dakikada kurulan premium ıslanma deneyimi. Ön sipariş açıldı.">
+<meta name="theme-color" content="#0f0d0b">
+<meta property="og:title" content="VELA — Askıda Küvet">
+<meta property="og:description" content="TPU polyester kumaştan, katlanabilir askıda küvet. Balkonda, banyoda, her dairede.">
+<meta property="og:image" content="assets/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ AÇILIŞ PERDESİ ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__word"><span>V</span><span>E</span><span>L</span><span>A</span></div>
+    <div class="loader__sub">askıda küvet</div>
+    <div class="loader__bar"><i></i></div>
+  </div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ============ NAVIGASYON ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand" aria-label="VELA ana sayfa">
+    <span class="nav__mark"></span>
+    <span class="nav__name">VELA</span>
+    <span class="nav__by">by BirEmek</span>
+  </a>
+  <nav class="nav__links" aria-label="Ana menü">
+    <a href="#urun">Ürün</a>
+    <a href="#renkler">Renkler</a>
+    <a href="#kumas">Kumaş</a>
+    <a href="#kurulum">Kurulum</a>
+    <a href="#teknik">Teknik</a>
+    <a href="#sss">SSS</a>
+  </nav>
+  <a href="#onsiparis" class="btn btn--sm nav__cta">Ön Sipariş</a>
+  <button class="nav__burger" id="burger" aria-label="Menüyü aç" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <nav class="drawer__links">
+    <a href="#urun"><em>01</em> Ürün</a>
+    <a href="#renkler"><em>02</em> Renkler</a>
+    <a href="#kumas"><em>03</em> Kumaş</a>
+    <a href="#kullanim"><em>04</em> Kullanım</a>
+    <a href="#kurulum"><em>05</em> Kurulum</a>
+    <a href="#teknik"><em>06</em> Teknik</a>
+    <a href="#sss"><em>07</em> SSS</a>
+    <a href="#onsiparis" class="drawer__cta"><em>08</em> Ön Sipariş</a>
+  </nav>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+
+  <div class="hero__media" data-parallax="0.14">
+    <div class="hero__frame">
+      <img src="assets/hero.jpg" alt="Duş alanına gerilmiş, su dolu bej renkli VELA askıda küvet" width="820" height="1024" fetchpriority="high">
+      <span class="hero__shine" aria-hidden="true"></span>
+    </div>
+    <div class="hero__caption">Wheat Beige · TP‑01</div>
+  </div>
+
+  <div class="hero__copy">
+    <p class="eyebrow" data-reveal>TPU kaplı polyester · 2026 koleksiyonu</p>
+    <h1 class="display">
+      <span class="line" data-reveal><span>Küvet artık</span></span>
+      <span class="line" data-reveal style="--d:.08s"><span>duvara <em>asılıyor.</em></span></span>
+    </h1>
+    <p class="lede" data-reveal style="--d:.18s">
+      Beton kırmadan, tesisat değiştirmeden, metrekare harcamadan.
+      VELA; apartman dairesinde, balkonda ve mevcut banyonuzda
+      15 dakikada kurulan, kullanmadığınızda katlanıp kalkan askıda küvettir.
+    </p>
+    <div class="hero__actions" data-reveal style="--d:.26s">
+      <a href="#onsiparis" class="btn">Ön siparişe katıl</a>
+      <a href="#urun" class="btn btn--ghost">Nasıl çalışır</a>
+    </div>
+    <ul class="hero__meta" data-reveal style="--d:.34s">
+      <li><b data-count="180">0</b><span>litre kapasite</span></li>
+      <li><b data-count="15">0</b><span>dakika kurulum</span></li>
+      <li><b data-count="5">0</b><span>kumaş rengi</span></li>
+    </ul>
+  </div>
+
+  <a href="#urun" class="hero__scroll" aria-label="Aşağı kaydır"><span></span>kaydır</a>
+</section>
+
+<!-- ============ KAYAN ŞERİT ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Katlanabilir</span><i>◆</i><span>Su geçirmez TPU</span><i>◆</i><span>Balkona uygun</span><i>◆</i>
+    <span>Kiracı dostu</span><i>◆</i><span>180 litre</span><i>◆</i><span>Delme yok*</span><i>◆</i>
+    <span>Katlanabilir</span><i>◆</i><span>Su geçirmez TPU</span><i>◆</i><span>Balkona uygun</span><i>◆</i>
+    <span>Kiracı dostu</span><i>◆</i><span>180 litre</span><i>◆</i><span>Delme yok*</span><i>◆</i>
+  </div>
+</div>
+
+<!-- ============ MANİFESTO ============ -->
+<section class="manifesto" id="urun">
+  <p class="section-tag" data-reveal>01 — Fikir</p>
+  <h2 class="manifesto__text">
+    <span class="line" data-reveal><span>Türkiye'deki dairelerin çoğunda</span></span>
+    <span class="line" data-reveal style="--d:.06s"><span>küvet için yer yok.</span></span>
+    <span class="line line--dim" data-reveal style="--d:.12s"><span>Biz de küvete</span></span>
+    <span class="line line--dim" data-reveal style="--d:.18s"><span>yer kaplamamayı öğrettik.</span></span>
+  </h2>
+  <div class="manifesto__grid">
+    <div data-reveal>
+      <h3>Gergin kumaş, sert değil.</h3>
+      <p>VELA bir tekne yelkeni gibi çalışır. İki duvara sabitlenen paslanmaz askı noktaları arasına gerilen TPU kaplı polyester, suyla dolduğunda vücudunuzu saran doğal bir hamak formu alır.</p>
+    </div>
+    <div data-reveal style="--d:.1s">
+      <h3>Bittiğinde ortada kalmaz.</h3>
+      <p>Tapa açılır, su mevcut giderden boşalır. Kumaş silinir, askıdan çıkarılır ve bir havlu kadar yer kaplayacak şekilde katlanır. Banyonuz yeniden banyo olur.</p>
+    </div>
+    <div data-reveal style="--d:.2s">
+      <h3>Taşınırken sizinle gelir.</h3>
+      <p>Kiracıysanız en büyük avantajı bu: 3,4 kg'lık bir rulo. Yeni evinizde askı aparatlarını takın, küvetiniz yeniden kurulsun.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÖZELLİKLER ============ -->
+<section class="features">
+  <p class="section-tag" data-reveal>02 — Neden VELA</p>
+  <h2 class="h2" data-reveal>Az yer, çok konfor.</h2>
+  <div class="features__grid">
+    <article class="feat" data-reveal>
+      <span class="feat__no">01</span>
+      <h3>TPU kaplı polyester</h3>
+      <p>0,45 mm çift yüz TPU laminasyon. Suya, sabuna, mineral kirece ve UV'ye dayanıklı; ftalat ve PVC içermez.</p>
+    </article>
+    <article class="feat" data-reveal style="--d:.06s">
+      <span class="feat__no">02</span>
+      <h3>180 litre hacim</h3>
+      <p>Standart bir oturmalı küvetle aynı su hacmi, üçte bir ağırlıkta. Omuz hizasına kadar dolan gerçek bir banyo.</p>
+    </article>
+    <article class="feat" data-reveal style="--d:.12s">
+      <span class="feat__no">03</span>
+      <h3>320 kg taşıma</h3>
+      <p>Askı noktası başına 160 kg güvenli yük. Çift dikişli kenar bandı ve paslanmaz 316 kalite halat kilidi.</p>
+    </article>
+    <article class="feat" data-reveal style="--d:.18s">
+      <span class="feat__no">04</span>
+      <h3>15 dakikada kurulum</h3>
+      <p>Dört vida, iki askı aparatı, bir su terazisi. Kutudan çıkan şablonla delik yerleri kendiliğinden belli olur.</p>
+    </article>
+    <article class="feat" data-reveal style="--d:.24s">
+      <span class="feat__no">05</span>
+      <h3>Katlanır, 3,4 kg</h3>
+      <p>Kullanılmadığında rulo halinde 12 × 70 cm. Dolap rafına, valize, bagaja sığar.</p>
+    </article>
+    <article class="feat" data-reveal style="--d:.3s">
+      <span class="feat__no">06</span>
+      <h3>Balkonda da olur</h3>
+      <p>Dış mekân sınıfı kumaş ve don dayanımı sayesinde kapalı balkonlarda, terasta ve bahçede kullanılabilir.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ RENK KONFİGÜRATÖRÜ ============ -->
+<section class="colors" id="renkler">
+  <div class="colors__head">
+    <p class="section-tag" data-reveal>03 — Renkler</p>
+    <h2 class="h2" data-reveal>Beş kumaş. Bir karakter.</h2>
+    <p class="sub" data-reveal style="--d:.08s">Renk seçiminiz ön sipariş formuna otomatik işlenir.</p>
+  </div>
+
+  <div class="colors__stage" data-reveal style="--d:.14s">
+    <div class="colors__viewer">
+      <div class="viewer" id="viewer">
+        <img src="assets/room-wheat.jpg" alt="Wheat Beige renkli VELA askıda küvet" class="viewer__img is-active" data-key="wheat" width="420" height="528">
+        <img src="assets/room-midnight.jpg" alt="Midnight Navy renkli VELA askıda küvet" class="viewer__img" data-key="midnight" width="420" height="525" loading="lazy">
+        <img src="assets/room-terracotta.jpg" alt="Terracotta renkli VELA askıda küvet" class="viewer__img" data-key="terracotta" width="420" height="524" loading="lazy">
+        <img src="assets/room-mint.jpg" alt="Aegean Mint renkli VELA askıda küvet" class="viewer__img" data-key="mint" width="420" height="525" loading="lazy">
+        <img src="assets/room-ivory.jpg" alt="Ivory renkli VELA askıda küvet" class="viewer__img" data-key="ivory" width="420" height="526" loading="lazy">
+      </div>
+      <div class="viewer viewer--macro" id="viewerMacro">
+        <img src="assets/swatch-wheat.jpg" alt="Wheat Beige kumaş dokusu" class="viewer__img is-active" data-key="wheat" width="420" height="527">
+        <img src="assets/swatch-midnight.jpg" alt="Midnight Navy kumaş dokusu" class="viewer__img" data-key="midnight" width="420" height="524" loading="lazy">
+        <img src="assets/swatch-terracotta.jpg" alt="Terracotta kumaş dokusu" class="viewer__img" data-key="terracotta" width="420" height="523" loading="lazy">
+        <img src="assets/swatch-mint.jpg" alt="Aegean Mint kumaş dokusu" class="viewer__img" data-key="mint" width="420" height="524" loading="lazy">
+        <img src="assets/swatch-ivory.jpg" alt="Ivory kumaş dokusu" class="viewer__img" data-key="ivory" width="420" height="525" loading="lazy">
+      </div>
+    </div>
+
+    <div class="colors__panel">
+      <div class="colors__info">
+        <span class="colors__code" id="colorCode">TP‑01</span>
+        <h3 class="colors__name" id="colorName">Wheat Beige</h3>
+        <p class="colors__desc" id="colorDesc">Sıcak kum tonu. Ahşap ve travertenle çalışan, ışığı yumuşatan nötr bir zemin.</p>
+      </div>
+      <div class="swatches" id="swatches" role="radiogroup" aria-label="Kumaş rengi seçin">
+        <button class="sw is-active" role="radio" aria-checked="true" data-key="wheat" data-name="Wheat Beige" data-code="TP‑01" data-hex="#d6ae86" data-desc="Sıcak kum tonu. Ahşap ve travertenle çalışan, ışığı yumuşatan nötr bir zemin."><i style="--c:#d6ae86"></i><span>Wheat Beige</span></button>
+        <button class="sw" role="radio" aria-checked="false" data-key="midnight" data-name="Midnight Navy" data-code="TP‑02" data-hex="#243043" data-desc="Derin gece mavisi. Koyu zeminli, mermer ve mat siyah armatürlü banyolar için."><i style="--c:#243043"></i><span>Midnight Navy</span></button>
+        <button class="sw" role="radio" aria-checked="false" data-key="terracotta" data-name="Terracotta" data-code="TP‑03" data-hex="#c07452" data-desc="Pişmiş toprak. Akdeniz sıcaklığı; kireç badana ve terrazzo ile güçlü bir kontrast."><i style="--c:#c07452"></i><span>Terracotta</span></button>
+        <button class="sw" role="radio" aria-checked="false" data-key="mint" data-name="Aegean Mint" data-code="TP‑04" data-hex="#a6cdc7" data-desc="Ege yeşili. Serinleten, spa hissi veren açık ton; küçük banyoları genişletir."><i style="--c:#a6cdc7"></i><span>Aegean Mint</span></button>
+        <button class="sw" role="radio" aria-checked="false" data-key="ivory" data-name="Ivory" data-code="TP‑05" data-hex="#e8e2d6" data-desc="Kırık beyaz. En sessiz seçenek; her banyoya uyan, zamansız bir kumaş."><i style="--c:#e8e2d6"></i><span>Ivory</span></button>
+      </div>
+      <a href="#onsiparis" class="btn btn--wide" id="colorCta">Wheat Beige ile ön sipariş ver</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KUMAŞ ============ -->
+<section class="fabric" id="kumas">
+  <div class="fabric__media" data-reveal>
+    <img src="assets/fabrics.jpg" alt="Beş renkte TPU kaplı polyester kumaş örnekleri" width="1200" height="1005" loading="lazy">
+  </div>
+  <div class="fabric__copy">
+    <p class="section-tag" data-reveal>04 — Malzeme</p>
+    <h2 class="h2" data-reveal style="--d:.06s">Yelken kumaşından<br>öğrenilmiş bir yüzey.</h2>
+    <p class="sub" data-reveal style="--d:.12s">
+      600D dokuma polyester taşıyıcı katman, iki yüzünden termoplastik poliüretan ile lamine edilir.
+      Ortaya çıkan yüzey suyu tutmaz, küf tutmaz ve binlerce katlanmaya rağmen kırılma izi bırakmaz.
+    </p>
+    <ul class="fabric__list">
+      <li data-reveal style="--d:.16s"><b>Hidrostatik direnç</b><span>10.000 mm su sütunu</span></li>
+      <li data-reveal style="--d:.2s"><b>Yırtılma mukavemeti</b><span>420 N (ISO 4674‑1)</span></li>
+      <li data-reveal style="--d:.24s"><b>Sıcaklık aralığı</b><span>−25 °C / +70 °C</span></li>
+      <li data-reveal style="--d:.28s"><b>Yüzey</b><span>Antibakteriyel, gıda sınıfı temas</span></li>
+      <li data-reveal style="--d:.32s"><b>İçermez</b><span>PVC, ftalat, BPA</span></li>
+      <li data-reveal style="--d:.36s"><b>Bakım</b><span>Nemli bezle silinir, makine yıkanmaz</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ KULLANIM ALANLARI ============ -->
+<section class="usage" id="kullanim">
+  <p class="section-tag" data-reveal>05 — Nerede</p>
+  <h2 class="h2" data-reveal>Üç metrekareniz varsa yeter.</h2>
+  <div class="usage__grid">
+    <article class="use" data-reveal>
+      <div class="use__top"><span>A</span><h3>Apartman dairesi</h3></div>
+      <p>Duş teknesinin üzerine kurulur. Mevcut gideri ve bataryayı kullanır; ek tesisat, silikon veya fayans işi gerekmez.</p>
+      <ul><li>Min. genişlik 120 cm</li><li>Duş teknesi / seramik zemin</li><li>Tadilatsız</li></ul>
+    </article>
+    <article class="use" data-reveal style="--d:.1s">
+      <div class="use__top"><span>B</span><h3>Balkon &amp; teras</h3></div>
+      <p>Kapalı balkonda yaz banyosu, terasta açık hava küveti. Don dayanımlı kumaş kışın dışarıda bırakılabilir.</p>
+      <ul><li>Yer gideri veya hortum</li><li>UV dayanımlı</li><li>Rüzgârda katlanır</li></ul>
+    </article>
+    <article class="use" data-reveal style="--d:.2s">
+      <div class="use__top"><span>C</span><h3>Küçük banyo</h3></div>
+      <p>4 m²'lik banyoda bile küvet konforu. Kullanılmadığında duvara toplanır, alan tamamen serbest kalır.</p>
+      <ul><li>Duvara toplanabilir</li><li>Çocuk banyosu için ideal</li><li>Evcil hayvan yıkama</li></ul>
+    </article>
+  </div>
+</section>
+
+<!-- ============ KURULUM ============ -->
+<section class="steps" id="kurulum">
+  <p class="section-tag" data-reveal>06 — Kurulum</p>
+  <h2 class="h2" data-reveal>Bir raf asmak kadar.</h2>
+  <ol class="steps__list">
+    <li data-reveal><span class="steps__n">1</span><h3>Askı noktalarını işaretle</h3><p>Kutudan çıkan kağıt şablonu duvara yapıştırın, su terazisiyle hizalayın. Zeminden 78 cm yükseklik önerilir.</p><em>4 dk</em></li>
+    <li data-reveal style="--d:.1s"><span class="steps__n">2</span><h3>Aparatları sabitle</h3><p>Verilen kimyasal dübel ve paslanmaz vidalarla iki askı aparatını monte edin. Fayans için elmas uç kutudadır.</p><em>8 dk</em></li>
+    <li data-reveal style="--d:.2s"><span class="steps__n">3</span><h3>Kumaşı ger ve doldur</h3><p>Kenar halatlarını kilitlere geçirin, gerdirme kolunu indirin. Tapayı takın, suyu açın. Hazır.</p><em>3 dk</em></li>
+  </ol>
+  <p class="steps__note" data-reveal>* Kiralık evler için delme gerektirmeyen, kapı kasasına ve duş bölmesi profiline tutunan <b>Clamp Kit</b> ayrıca sunulur.</p>
+</section>
+
+<!-- ============ TEKNİK ============ -->
+<section class="specs" id="teknik">
+  <div class="specs__head">
+    <p class="section-tag" data-reveal>07 — Teknik</p>
+    <h2 class="h2" data-reveal>Kutunun içinde ne var?</h2>
+  </div>
+  <div class="specs__body">
+    <table class="spec-table" data-reveal>
+      <tbody>
+        <tr><th scope="row">Gergin ölçü (G × D)</th><td>168 × 78 cm</td></tr>
+        <tr><th scope="row">Kumaş ölçüsü</th><td>190 × 96 cm</td></tr>
+        <tr><th scope="row">Su hacmi</th><td>180 litre (max. 205 l)</td></tr>
+        <tr><th scope="row">Ürün ağırlığı</th><td>3,4 kg (kumaş) + 1,1 kg (askı seti)</td></tr>
+        <tr><th scope="row">Katlanmış ölçü</th><td>Ø12 × 70 cm rulo</td></tr>
+        <tr><th scope="row">Taşıma kapasitesi</th><td>320 kg toplam</td></tr>
+        <tr><th scope="row">Malzeme</th><td>600D polyester + çift yüz TPU (0,45 mm)</td></tr>
+        <tr><th scope="row">Askı donanımı</th><td>AISI 316 paslanmaz çelik</td></tr>
+        <tr><th scope="row">Tahliye</th><td>Ø40 mm silikon tapa, mevcut gidere</td></tr>
+        <tr><th scope="row">Garanti</th><td>3 yıl kumaş, 10 yıl donanım</td></tr>
+      </tbody>
+    </table>
+    <div class="specs__box" data-reveal style="--d:.1s">
+      <img src="assets/packaging.jpg" alt="VELA silindir karton ambalaj" width="620" height="1063" loading="lazy">
+      <div class="specs__boxcopy">
+        <h3>Kutu içeriği</h3>
+        <ul>
+          <li>VELA kumaş gövde (seçtiğiniz renk)</li>
+          <li>2 × paslanmaz askı aparatı + gerdirme kolu</li>
+          <li>Kimyasal dübel, vida ve elmas matkap ucu</li>
+          <li>Silikon tahliye tapası ve süzgeç</li>
+          <li>Kağıt montaj şablonu, su terazisi kartı</li>
+          <li>Mikrofiber bakım bezi, taşıma kılıfı</li>
+        </ul>
+        <p class="specs__eco">%100 geri dönüştürülmüş karton silindir ambalaj. Plastik köpük kullanılmaz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÖN SİPARİŞ ============ -->
+<section class="order" id="onsiparis">
+  <div class="order__intro">
+    <p class="section-tag" data-reveal>08 — Ön sipariş</p>
+    <h2 class="h2" data-reveal>İlk 500 kişi<br>kurucu fiyatından alır.</h2>
+    <p class="sub" data-reveal style="--d:.08s">
+      Ön sipariş şu an bağlayıcı bir ödeme içermez. Formu bırakın, üretim partiniz açıldığında
+      size özel link ve fiyat kilidi e‑postanıza gelsin.
+    </p>
+    <div class="order__price" data-reveal style="--d:.14s">
+      <div class="order__pricerow">
+        <span class="order__old">₺18.900</span>
+        <span class="order__new">₺13.900</span>
+      </div>
+      <span class="order__badge">Kurucu fiyatı · %26 indirim</span>
+      <ul class="order__perks">
+        <li>Ücretsiz kurulum görüşmesi</li>
+        <li>Yedek tahliye tapası hediye</li>
+        <li>Renk değiştirme hakkı (teslimattan 30 gün önceye kadar)</li>
+        <li>Beğenmezsen 14 gün koşulsuz iade</li>
+      </ul>
+      <div class="order__stock">
+        <div class="order__bar"><i id="stockBar"></i></div>
+        <span><b id="stockCount">312</b> / 500 kontenjan doldu</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="order__formwrap" data-reveal style="--d:.1s">
+    <form class="form" id="orderForm" novalidate>
+      <h3 class="form__title">Ön sipariş formu</h3>
+
+      <div class="field">
+        <input type="text" id="fName" name="ad" required autocomplete="name" placeholder=" ">
+        <label for="fName">Ad Soyad</label>
+        <small></small>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <input type="email" id="fMail" name="eposta" required autocomplete="email" placeholder=" ">
+          <label for="fMail">E‑posta</label>
+          <small></small>
+        </div>
+        <div class="field">
+          <input type="tel" id="fPhone" name="telefon" required autocomplete="tel" placeholder=" " inputmode="tel">
+          <label for="fPhone">Telefon</label>
+          <small></small>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field field--select">
+          <select id="fColor" name="renk">
+            <option value="Wheat Beige">Wheat Beige · TP‑01</option>
+            <option value="Midnight Navy">Midnight Navy · TP‑02</option>
+            <option value="Terracotta">Terracotta · TP‑03</option>
+            <option value="Aegean Mint">Aegean Mint · TP‑04</option>
+            <option value="Ivory">Ivory · TP‑05</option>
+          </select>
+          <label for="fColor">Kumaş rengi</label>
+        </div>
+        <div class="field field--select">
+          <select id="fCity" name="sehir" required>
+            <option value="" selected disabled></option>
+            <option>İstanbul</option><option>Ankara</option><option>İzmir</option>
+            <option>Bursa</option><option>Antalya</option><option>Kocaeli</option>
+            <option>Muğla</option><option>Diğer</option>
+          </select>
+          <label for="fCity">Şehir</label>
+          <small></small>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field field--select">
+          <select id="fPlace" name="kurulum">
+            <option>Banyo — duş teknesi üzeri</option>
+            <option>Banyo — seramik zemin</option>
+            <option>Kapalı balkon</option>
+            <option>Teras / bahçe</option>
+            <option>Henüz karar vermedim</option>
+          </select>
+          <label for="fPlace">Kurulum yeri</label>
+        </div>
+        <div class="field field--qty">
+          <label class="qty__label" for="fQty">Adet</label>
+          <div class="qty">
+            <button type="button" class="qty__btn" data-step="-1" aria-label="Azalt">−</button>
+            <input type="number" id="fQty" name="adet" value="1" min="1" max="10" inputmode="numeric">
+            <button type="button" class="qty__btn" data-step="1" aria-label="Artır">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <textarea id="fNote" name="not" rows="3" placeholder=" "></textarea>
+        <label for="fNote">Not (isteğe bağlı)</label>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="fKvkk" required>
+        <span class="check__box" aria-hidden="true"></span>
+        <span class="check__text">Kişisel verilerimin ön sipariş süreci için işlenmesini kabul ediyorum.</span>
+      </label>
+
+      <div class="form__total">
+        <span>Tahmini tutar</span>
+        <b id="formTotal">₺13.900</b>
+      </div>
+
+      <button type="submit" class="btn btn--wide btn--solid" id="submitBtn">
+        <span>Ön siparişimi oluştur</span>
+      </button>
+      <p class="form__fine">Şimdi ödeme alınmaz. Onay e‑postası birkaç dakika içinde gönderilir.</p>
+    </form>
+
+    <div class="success" id="success" hidden>
+      <div class="success__tick" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20"/><path d="M13 22.5l6 6 12-13"/></svg></div>
+      <h3>Kaydınız alındı.</h3>
+      <p id="successMsg">Teşekkürler. Ön sipariş numaranız aşağıda.</p>
+      <div class="success__code" id="successCode">VELA‑000000</div>
+      <button type="button" class="btn btn--ghost" id="againBtn">Yeni kayıt oluştur</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SSS ============ -->
+<section class="faq" id="sss">
+  <p class="section-tag" data-reveal>09 — Sorular</p>
+  <h2 class="h2" data-reveal>Merak edilenler</h2>
+  <div class="faq__list">
+    <details data-reveal>
+      <summary>Duvarı delmeden kurulabilir mi?</summary>
+      <div><p>Evet. Standart sette kimyasal dübel kullanılır; ancak kiracılar için geliştirdiğimiz <b>Clamp Kit</b>, duş bölmesi profiline veya kapı kasasına sıkıştırma prensibiyle tutunur ve hiçbir iz bırakmaz. Ön sipariş formundaki nota "Clamp Kit" yazmanız yeterli.</p></div>
+    </details>
+    <details data-reveal style="--d:.05s">
+      <summary>Su nereye boşalıyor?</summary>
+      <div><p>Kumaşın en alçak noktasındaki Ø40 mm silikon tapa açıldığında su doğrudan altındaki mevcut duş giderine akar. Ek tesisat, pompa veya elektrik bağlantısı gerekmez. 180 litre yaklaşık 3–4 dakikada boşalır.</p></div>
+    </details>
+    <details data-reveal style="--d:.1s">
+      <summary>Kaç kilo taşır?</summary>
+      <div><p>Toplam güvenli yük 320 kg'dır; bu, su ve kullanıcı ağırlığının toplamıdır. 180 litre su ≈ 180 kg olduğundan 140 kg'a kadar kullanıcı ağırlığı için tasarım payı bırakılmıştır. Test yükü 640 kg'da doğrulanmıştır.</p></div>
+    </details>
+    <details data-reveal style="--d:.15s">
+      <summary>Küf yapar mı, nasıl temizlenir?</summary>
+      <div><p>TPU yüzey gözeneksizdir; küf tutunamaz. Kullanım sonrası duş başlığıyla durulayıp mikrofiber bezle silmeniz yeterlidir. Kireç için sirkeli su kullanılabilir. Çamaşır makinesine atmayın, ütülemeyin.</p></div>
+    </details>
+    <details data-reveal style="--d:.2s">
+      <summary>Balkonda kışın dışarıda kalabilir mi?</summary>
+      <div><p>Kumaş −25 °C'ye kadar esnekliğini korur ve UV dayanımlıdır. Yine de ömrü uzatmak için soğuk aylarda katlayıp kılıfında saklamanızı öneririz. Askı donanımı paslanmaz olduğundan dışarıda kalabilir.</p></div>
+    </details>
+    <details data-reveal style="--d:.25s">
+      <summary>Ön sipariş ne zaman teslim edilecek?</summary>
+      <div><p>İlk üretim partisi kontenjan dolduktan sonra açılır; mevcut plana göre teslimatlar <b>2026 ilkbaharında</b> başlar. Sıranız geldiğinde ödeme linki ve kesin teslim tarihi e‑posta ile gönderilir. Ön sipariş sizi bağlamaz, dilediğiniz an iptal edebilirsiniz.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- ============ SON ÇAĞRI ============ -->
+<section class="cta">
+  <div class="cta__inner">
+    <h2 class="display" data-reveal><span class="line"><span>Banyonuzu büyütmeyin.</span></span></h2>
+    <h2 class="display display--dim" data-reveal style="--d:.08s"><span class="line"><span>Küveti küçültün.</span></span></h2>
+    <a href="#onsiparis" class="btn btn--solid btn--lg" data-reveal style="--d:.16s">Ön siparişe katıl</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__top">
+    <div class="foot__brand">
+      <span class="nav__mark"></span>
+      <b>VELA</b>
+      <p>BirEmek Tasarım ve Tekstil<br>askıda küvet sistemleri</p>
+    </div>
+    <div class="foot__col">
+      <h4>Ürün</h4>
+      <a href="#urun">Genel bakış</a><a href="#renkler">Renkler</a>
+      <a href="#kumas">Kumaş</a><a href="#teknik">Teknik veriler</a>
+    </div>
+    <div class="foot__col">
+      <h4>Destek</h4>
+      <a href="#kurulum">Kurulum</a><a href="#sss">SSS</a>
+      <a href="#onsiparis">Ön sipariş</a><a href="mailto:merhaba@biremek.com">merhaba@biremek.com</a>
+    </div>
+    <div class="foot__col">
+      <h4>Kurumsal</h4>
+      <a href="#top">Hakkımızda</a><a href="#top">KVKK aydınlatma metni</a>
+      <a href="#top">Mesafeli satış sözleşmesi</a><a href="#top">İade koşulları</a>
+    </div>
+  </div>
+  <div class="foot__bot">
+    <span>© 2026 BirEmek. Tüm hakları saklıdır.</span>
+    <span>Türkiye'de tasarlandı ve üretildi.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
