@@ -1,5 +1,5 @@
 /* =========================================================
-   VELA — askıda küvet · BirEmek
+   QWET — askıda küvet · BirEmek
    ========================================================= */
 
 :root{
@@ -90,20 +90,28 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    AÇILIŞ PERDESİ
    ========================================================= */
 .loader{
-  position:fixed;inset:0;z-index:200;background:var(--bg);
+  position:fixed;inset:0;z-index:200;background-color:var(--bg);
   display:grid;place-items:center;
-  transition:opacity .8s var(--ease),visibility .8s;
+  transition:background-color .9s var(--ease);
 }
-.loader.is-done{opacity:0;visibility:hidden}
+/* logo nav'daki yerine uçarken perde saydamlaşır, yazı görünür kalır */
+.loader.is-exiting{pointer-events:none;background-color:transparent}
+.loader.is-exiting .loader__sub,
+.loader.is-exiting .loader__bar{opacity:0;transition:opacity .35s var(--ease)}
+.loader.is-done{visibility:hidden}
 .loader__inner{text-align:center}
 .loader__word{
-  font-family:var(--serif);font-size:clamp(3rem,11vw,6rem);
-  letter-spacing:.1em;line-height:1;display:flex;gap:.04em;
+  display:inline-block;font-family:var(--serif);font-weight:300;
+  font-size:clamp(2.6rem,10vw,5.4rem);
+  letter-spacing:.16em;line-height:1;white-space:nowrap;
+  will-change:transform;
 }
 .loader__word span{
-  display:block;opacity:0;transform:translateY(60%);
+  display:inline-block;opacity:0;transform:translateY(60%);
   animation:loadIn .9s var(--ease-out) forwards;
 }
+/* uçuş başlarken harf animasyonları sıfırlanır, blok tek parça hareket eder */
+.loader.is-exiting .loader__word span{animation:none;opacity:1;transform:none}
 .loader__word span:nth-child(2){animation-delay:.07s}
 .loader__word span:nth-child(3){animation-delay:.14s}
 .loader__word span:nth-child(4){animation-delay:.21s}
@@ -118,7 +126,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .loader__bar i{
   display:block;height:100%;width:100%;background:var(--accent);
   transform:scaleX(0);transform-origin:left;
-  animation:loadBar 1.3s .25s var(--ease) forwards;
+  animation:loadBar 1.05s .2s var(--ease) forwards;
 }
 @keyframes loadBar{to{transform:scaleX(1)}}
 
@@ -169,7 +177,22 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   align-self:center;transition:background .7s var(--ease);
   box-shadow:0 0 14px var(--accent);
 }
-.nav__name{font-family:var(--serif);font-size:1.45rem;letter-spacing:.16em}
+.nav__name{font-family:var(--serif);font-weight:300;font-size:1.45rem;letter-spacing:.16em;line-height:1}
+
+/* açılışta nav boş durur; logo perdeden uçup gelince dolar.
+   Öğeler yerinde kalır (yalnızca opacity 0) ki logonun uçacağı
+   hedef konum ölçülebilsin. */
+.nav.is-loading .nav__mark,
+.nav.is-loading .nav__by,
+.nav.is-loading .nav__links,
+.nav.is-loading .nav__cta,
+.nav.is-loading .nav__burger{opacity:0}
+.nav__by,.nav__links,.nav__cta,.nav__burger{
+  transition:opacity .7s var(--ease) .15s;
+}
+.nav__mark{transition:background .7s var(--ease),opacity .7s var(--ease) .15s}
+.nav__name{opacity:0;transition:opacity .25s var(--ease)}
+.nav.is-named .nav__name{opacity:1}
 .nav__by{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 .nav__links{display:flex;gap:2.1rem}
 .nav__links a{

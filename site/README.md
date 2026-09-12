@@ -1,4 +1,4 @@
-# VELA — askıda küvet tanıtım sitesi
+# QWET — askıda küvet tanıtım sitesi
 
 TPU kaplı polyester kumaştan üretilen askıda küvet için tek sayfalık, animasyonlu
 tanıtım ve ön sipariş sitesi. Derleme adımı yok: saf HTML + CSS + JavaScript.
@@ -30,10 +30,10 @@ kullanan ön sipariş kaydı `file://` üzerinde bazı tarayıcılarda engelleni
 ## Ön sipariş formunu gerçek sisteme bağlama
 
 Form şu an doğrulamayı yapıp kaydı tarayıcıdaki `localStorage`'a yazıyor
-(`vela.orders` anahtarı). Kayıtları görmek için tarayıcı konsolunda:
+(`qwet.orders` anahtarı). Kayıtları görmek için tarayıcı konsolunda:
 
 ```js
-JSON.parse(localStorage.getItem('vela.orders'))
+JSON.parse(localStorage.getItem('qwet.orders'))
 ```
 
 Canlıya alırken `script.js` içindeki **9. bölümde**, `// Burası gerçek uçla

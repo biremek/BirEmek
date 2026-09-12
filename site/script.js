@@ -1,5 +1,5 @@
 /* =========================================================
-   VELA — askıda küvet · etkileşim katmanı
+   QWET — askıda küvet · etkileşim katmanı
    ========================================================= */
 (function () {
   'use strict';
@@ -12,16 +12,57 @@
      1. AÇILIŞ PERDESİ
      --------------------------------------------------------- */
   const loader = $('#loader');
-  const MIN_LOAD = reduced ? 0 : 1500;
+  const loaderWord = $('#loaderWord');
+  const navName = $('#navName');
+  const MIN_LOAD = reduced ? 0 : 1400;
+  const FLIGHT = 1000;
   const t0 = performance.now();
+  let closed = false;
+
+  function settleNav() {
+    $('#nav').classList.add('is-named');
+    loader.classList.add('is-done');
+    // geçişi önce kapat, yoksa transform sıfırlanırken ortaya geri uçar
+    loaderWord.style.transition = 'none';
+    loaderWord.style.transform = '';
+    document.body.classList.remove('is-locked');
+  }
+
+  // Perdedeki büyük QWET yazısı, ölçülen konum farkına göre
+  // nav'daki logonun tam üstüne uçar (FLIP). Ölçüm gerçek
+  // kutulardan alındığı için ekran boyutundan bağımsız oturur.
+  function flyLogoToNav() {
+    const nav = $('#nav');
+    const showNav = () => nav.classList.replace('is-loading', 'is-ready');
+
+    if (reduced) { showNav(); settleNav(); revealInView(); return; }
+
+    // nav opacity 0 olsa da yerleşimi hazır; ölçüm buradan alınır
+    const from = loaderWord.getBoundingClientRect();
+    const to = navName.getBoundingClientRect();
+    if (!from.width || !to.width) { showNav(); settleNav(); revealInView(); return; }
+
+    const scale = to.width / from.width;
+    const dx = to.left - from.left;
+    const dy = (to.top + to.height / 2) - (from.top + from.height / 2);
+
+    loader.classList.add('is-exiting');
+    revealInView();
+
+    requestAnimationFrame(() => {
+      loaderWord.style.transformOrigin = 'left center';
+      loaderWord.style.transition = `transform ${FLIGHT}ms cubic-bezier(.76,0,.24,1)`;
+      loaderWord.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+    });
+
+    setTimeout(showNav, FLIGHT * 0.45);
+    setTimeout(settleNav, FLIGHT);
+  }
 
   function closeLoader() {
-    const wait = Math.max(0, MIN_LOAD - (performance.now() - t0));
-    setTimeout(() => {
-      loader.classList.add('is-done');
-      document.body.classList.remove('is-locked');
-      revealInView();
-    }, wait);
+    if (closed) return;
+    closed = true;
+    setTimeout(flyLogoToNav, Math.max(0, MIN_LOAD - (performance.now() - t0)));
   }
   document.body.classList.add('is-locked');
   window.addEventListener('load', closeLoader);
@@ -268,7 +309,7 @@
 
     // forma işle
     if (colorField && colorField.value !== name) colorField.value = name;
-    if (scrollSync) localStorage.setItem('vela.color', key);
+    if (scrollSync) localStorage.setItem('qwet.color', key);
   }
 
   swatches.forEach((btn) => btn.addEventListener('click', () => applyColor(btn, true)));
@@ -280,7 +321,7 @@
   });
 
   // önceki seçimi geri yükle
-  const saved = localStorage.getItem('vela.color');
+  const saved = localStorage.getItem('qwet.color');
   const savedBtn = saved && swatches.find((s) => s.dataset.key === saved);
   if (savedBtn) applyColor(savedBtn, false);
 
@@ -393,7 +434,7 @@
     submitBtn.disabled = true;
 
     const order = {
-      kod: 'VELA‑' + Date.now().toString(36).toUpperCase().slice(-6),
+      kod: 'QWET‑' + Date.now().toString(36).toUpperCase().slice(-6),
       ad: $('#fName').value.trim(),
       eposta: $('#fMail').value.trim(),
       telefon: $('#fPhone').value.trim(),
@@ -409,14 +450,14 @@
     // Burası gerçek uçla değiştirilecek (bkz. site/README.md)
     setTimeout(() => {
       try {
-        const all = JSON.parse(localStorage.getItem('vela.orders') || '[]');
+        const all = JSON.parse(localStorage.getItem('qwet.orders') || '[]');
         all.push(order);
-        localStorage.setItem('vela.orders', JSON.stringify(all));
+        localStorage.setItem('qwet.orders', JSON.stringify(all));
       } catch (err) { /* depolama kapalı olabilir */ }
 
       successCode.textContent = order.kod;
       successMsg.textContent =
-        `${order.ad.split(' ')[0]}, ${order.adet} adet ${order.renk} VELA için sıraya alındınız. ` +
+        `${order.ad.split(' ')[0]}, ${order.adet} adet ${order.renk} QWET için sıraya alındınız. ` +
         `Onay e‑postası ${order.eposta} adresine gönderildi.`;
 
       form.classList.add('is-gone');
